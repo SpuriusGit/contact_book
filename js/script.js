@@ -6,8 +6,6 @@ const create_form = document.querySelector('.create_form'),
     contactBook = document.querySelector('.contact_book'),
     contactList = document.querySelector('.contact_list'),
     contactInfo = document.querySelector('.contact_info'),
-    addNewInfo = document.querySelector('.add_new_info'),
-    addNewInfo_btn = document.querySelector('.contact_info__add'),
     contactListItem = document.querySelector('.contact_list__item');
 
 const contactsDB = {}; //сюда закидаем все контакты
@@ -45,11 +43,19 @@ function showContactInfo(){ //Открываем информацию о кон�
             <button class="contact_info__close">X</button>
             `;
             function showAddInfo(){
+                let addNewInfo = document.querySelector('.add_new_info'),
+                    addNewInfo_btn = document.querySelector('.contact_info__add');
                 addNewInfo_btn.addEventListener('click',function(){
                     addNewInfo.style.display = 'flex';
-                })
+                });
             }
             showAddInfo();
+            function hideAddInfo(){
+                document.querySelector('.add_new_info__close').addEventListener('click',()=>{
+                    document.querySelector('.add_new_info').style.display = 'none';
+                });
+            }
+            hideAddInfo();
             }
         });
     });

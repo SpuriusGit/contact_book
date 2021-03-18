@@ -124,9 +124,9 @@ label{
 .add_new_info__key,.add_new_info__value,.add_new_info__add{
     height: 60px;
     width: 30%;
-    margin: auto;
+    margin: auto 20px;
     font-size: 24px;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 10px;
 }
 
