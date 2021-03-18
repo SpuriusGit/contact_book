@@ -18,6 +18,7 @@ function addContact(){ // добавляем в обьект контакты
         contactsDB[nameArea.value] = numArea.value;
         contactList.innerHTML += `<li class="contact_list__item" id='${nameArea.value}'>${contactList.children.length +1 }. ${nameArea.value}<button class="delete">-</button></li>`;
         console.log(contactsDB);
+
         delContact();
         showContactInfo();
         hideContactInfo();
@@ -26,8 +27,12 @@ function addContact(){ // добавляем в обьект контакты
 function delContact(){ // удаляем выбраный контакт
     document.querySelectorAll('.delete').forEach((btn)=>{
         btn.addEventListener('click',()=>{
-            btn.parentElement.remove();
-            delete contactsDB[btn.parentElement.id];
+            let check = confirm('Вы уверены?');
+            console.log(check);
+            if(check == true){
+                btn.parentElement.remove();
+                delete contactsDB[btn.parentElement.id];
+            }
         });
     });
 }
@@ -36,28 +41,26 @@ function showContactInfo(){ //Открываем информацию о кон�
         item.addEventListener('click',(e)=>{
             if((e.target == item)&&(e.target !== document.querySelectorAll('.contact_list__item'))){
             contactInfo.style.display = 'flex';
-            contactInfo.innerHTML = `
-            <label for="contact_info__name">Имя <input type="text" class="contact_info__name" value="${item.id}"></label>
-            <label for="contact_info__number">Номер <input type="text" class="contact_info__number" value="${contactsDB[item.id]}"></label>
+            contactInfo.innerHTML = `<button class="contact_info__close">X</button>
+            <div class="contact_info__inner">
+            <label for="contact_info__name">Имя <input type="text" class="contact_info__name" value="${item.id}"><button class="delete">-</button></label>
+            <label for="contact_info__number">Номер <input type="text" class="contact_info__number" value="${contactsDB[item.id]}"><button class="delete">-</button></label>
+            </div>
             <button class="contact_info__add">Добавить</button>
-            <button class="contact_info__close">X</button>
             `;
-            function showAddInfo(){
-                let addNewInfo = document.querySelector('.add_new_info'),
-                    addNewInfo_btn = document.querySelector('.contact_info__add');
-                addNewInfo_btn.addEventListener('click',function(){
-                    addNewInfo.style.display = 'flex';
-                });
-            }
+
             showAddInfo();
-            function hideAddInfo(){
-                document.querySelector('.add_new_info__close').addEventListener('click',()=>{
-                    document.querySelector('.add_new_info').style.display = 'none';
-                });
-            }
             hideAddInfo();
+            delContact();
             }
         });
+    });
+}
+function showAddInfo(){
+    let addNewInfo = document.querySelector('.add_new_info'),
+        addNewInfo_btn = document.querySelector('.contact_info__add');
+    addNewInfo_btn.addEventListener('click',function(){
+        addNewInfo.style.display = 'flex';
     });
 }
 function hideContactInfo(){ // Закрываем информацию о контакте
@@ -67,5 +70,26 @@ function hideContactInfo(){ // Закрываем информацию о кон
         }
     });
 }
+function hideAddInfo(){
+    document.querySelector('.add_new_info__close').addEventListener('click',()=>{
+        document.querySelector('.add_new_info').style.display = 'none';
+    });
+}
+function addUserInfo(){
+    document.querySelector('.add_new_info__add').addEventListener('click',()=>{
+        let addNewInfoKey = document.querySelector('.add_new_info__key');
+        let addNewInfoValue = document.querySelector('.add_new_info__value');
+    if((addNewInfoKey.value !== '')&&(addNewInfoValue.value !== '')){
+        document.querySelector('.contact_info__inner').innerHTML += `
+        <label for="contact_info__name">${addNewInfoKey.value}<input type="text" class="contact_info__name" value="${addNewInfoValue.value}"><button class="delete">-</button></label>`;
+        addNewInfoKey.value = '';
+        addNewInfoValue.value = '';
+        document.querySelector('.add_new_info').style.display = 'none';
+        }
+        delContact();
+    });
+    
+}
+addUserInfo();
 addContact();
 });

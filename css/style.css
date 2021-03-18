@@ -42,6 +42,7 @@
     font-size: 25px;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 .delete{
     height: 35px;
@@ -58,16 +59,21 @@
 .contact_list__item:hover .delete{
     display: block;
 }
-
+label:hover .delete{
+    display: block;
+    position: relative;
+    top:-40px;
+    left:340px;
+}
 .contact_info{
     display: none;
-    justify-content: center;
-    position: absolute;
-    height: fit-content;
-    width: 60%;
+    flex-direction: column;
+    position: relative;
+    width: 40%;
+    height: auto;
     border-radius: 30px;
     margin:3% auto 0;
-    top:0;
+    top:-400px;
     left: 0;
     bottom: 0;
     right: 0;
@@ -76,15 +82,22 @@
     font-size: 24px;
     z-index: 50;
 }
+.contact_info .contact_info__inner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 label{
+    display: flex;
+    flex-direction: column;
     height: 60px;
-    width: 30%;
+    width: 400px;
     margin: 30px auto;
     text-align: center;
     border-radius: 20px;
 }
 .contact_info__name,.contact_info__number{
-    width: 70%;
+    width: 100%;
 }
 .contact_info__add{
     height: 60px;
@@ -96,23 +109,27 @@ label{
     font-size: 24px;
     cursor: pointer;
 }
+.contact_info__close{
+    align-self: flex-end;
+}
 .contact_info__close,.add_new_info__close{
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: red;
     position: relative;
     margin: 10px;
+    font-size: 20px;
 }
 .add_new_info{
     display: none;
     justify-content: center;
     position: absolute;
     height: 200px;
-    width: 40%;
+    width: 50%;
     border-radius: 30px;
     margin:3% auto 0;
-    top:0;
+    top:10px;
     left: 0;
     bottom: 0;
     right: 0;
