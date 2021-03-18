@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}    
+.create_form,.contact_book{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    width: 50%;
+    margin:30px auto;
+    border-radius: 30px;
+    background-color: darkslategray;
+    padding: 30px;
+}
+.name,.number,.add,.contact_info__name,.contact_info__number{
+    height: 60px;
+    width: 30%;
+    border-radius: 10px;
+    font-size: 22px;
+    margin: auto;
+    padding: 10px;
+}
+.contact_book{
+    height: auto;
+}
+.contact_list{
+    display: block;
+    list-style: none;
+    width: 100%;
+    margin: auto;
+}
+.contact_list__item{
+    height: 60px;
+    width: 40%;
+    background-color: #ffffff;
+    margin: 10px auto;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.delete{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: auto 10px;
+    border:none;
+    background-color: red;
+    color: #ffffff;
+    font-size: 25px;
+    display: none;
+    cursor: pointer;
+}
+.contact_list__item:hover .delete{
+    display: block;
+}
+
+.contact_info{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    height: fit-content;
+    width: 60%;
+    border-radius: 30px;
+    margin:3% auto 0;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border:1px solid black;
+    background-color:ghostwhite;
+    font-size: 24px;
+    z-index: 50;
+}
+label{
+    height: 60px;
+    width: 30%;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 20px;
+}
+.contact_info__name,.contact_info__number{
+    width: 70%;
+}
+.contact_info__add{
+    height: 60px;
+    width: 20%;
+    margin: 30px auto;
+    border:1px solid black;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.contact_info__close,.add_new_info__close{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: red;
+    position: relative;
+    margin: 10px;
+}
+.add_new_info{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    height: 200px;
+    width: 40%;
+    border-radius: 30px;
+    margin:3% auto 0;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border:1px solid black;
+    background-color:ghostwhite;
+    font-size: 24px;
+    z-index: 150;
+}
+.add_new_info__key,.add_new_info__value,.add_new_info__add{
+    height: 60px;
+    width: 30%;
+    margin: auto;
+    font-size: 24px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
